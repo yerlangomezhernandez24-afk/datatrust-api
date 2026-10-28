@@ -98,8 +98,9 @@ python3 -m venv .venv
 .venv/bin/python -m uvicorn datatrust_api.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-macOS/Linux was not locally verified in this closing cycle. The CI file declares
-Python 3.11/3.12, but no remote CI result is claimed.
+Manual macOS/Linux execution was not verified in this closing cycle. The
+published GitHub Actions workflow did complete successfully on Linux with
+Python 3.11 and 3.12.
 
 ## Included synthetic datasets
 
@@ -163,7 +164,9 @@ node --check src\datatrust_api\static\app.js
 A `1.0.0` wheel was installed in a separate environment and its resources were
 loaded. Real browser tests covered 360×800, 390×844, 768×1024, and 1366×768.
 See [VERIFICACION.md](docs/VERIFICACION.md) and [BENCHMARK.md](docs/BENCHMARK.md).
-The benchmark is a local engineering measurement, not an SLA.
+The benchmark is a local engineering measurement, not an SLA. The verified
+remote run is available in
+[GitHub Actions](https://github.com/yerlangomezhernandez24-afk/datatrust-api/actions/runs/40632875253).
 
 ## Security and privacy
 
@@ -191,9 +194,12 @@ should reopen it. Authentication, TLS, tenant isolation, retention,
 observability, migrations, and a measured WAL/server-database strategy would be
 a separate product scope.
 
-The public identity, GitHub `noreply` address, and target repository are
-defined. Publication remains pending until the initial commit is created and
-Git is authenticated from this computer. See
+The project is public at
+[github.com/yerlangomezhernandez24-afk/datatrust-api](https://github.com/yerlangomezhernandez24-afk/datatrust-api)
+on `main`, with the confirmed GitHub `noreply` identity. The remote Python
+3.11/3.12 matrix is green. The service was not deployed and GitHub Pages was
+not enabled; the demo remains local. See the
+[publication report](docs/INFORME_PUBLICACION_GITHUB.md),
 [DATOS_PENDIENTES_PUBLICACION.md](docs/DATOS_PENDIENTES_PUBLICACION.md) and
 [CHECKLIST_PUBLICACION_GITHUB.md](docs/CHECKLIST_PUBLICACION_GITHUB.md). No
 `LICENSE` file is included because the owner has not selected one.

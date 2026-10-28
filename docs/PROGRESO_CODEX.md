@@ -10,11 +10,12 @@
 | 1. Calidad de entradas y garantías financieras | COMPLETADA | Política explícita, regresiones rojas, perfiles ampliados y suite completa de 97 casos verde. |
 | 2. SQLite, backups y recuperación | COMPLETADA | API backup/restore/integridad, CLI, pruebas y experimento DELETE/WAL ejecutado; WAL no adoptado. |
 | 3. Dashboard y E2E | COMPLETADA | Smoke HTTP real, navegador E2E, accesibilidad y responsive verificados; overflow móvil corregido. |
-| 4. CI y reproducibilidad | COMPLETADA LOCAL / PARCIAL EXTERNA | Versión/metadata 0.3.0 coherentes y httpx2 sin warnings en 3.12; 3.11/CI/Docker no ejecutados. |
+| 4. CI y reproducibilidad | COMPLETADA LOCAL Y CI | Versión/metadata 1.0.0 coherentes; Python 3.11/3.12 aprobados en GitHub Actions. Docker no ejecutado. |
 | 5. IA verificable | COMPLETADA COMO DECISIÓN | scikit-learn ausente y sin dataset etiquetado; no se implementó ML ni se inventaron métricas. |
 | 6. Entrega y continuidad | COMPLETADA | Informe, verificación final, árbol Git y reanudación cerrados. |
 | 7. Cierre integral de calidad | COMPLETADA | Snapshot preservado, 109/109, instalación limpia, E2E responsive e informe v0.3.0. |
 | 8. Cierre final de portafolio | COMPLETADA | 113/113, demos 6/100, wheel final, E2E real, materiales de publicación y v1.0.0. |
+| 9. Publicación GitHub | COMPLETADA | Repositorio público, autoría preservada, CI verde, topics y auditoría de privacidad verificados. |
 
 ## Fase 0 — registro parcial
 
@@ -196,3 +197,21 @@ Lee `AGENTS.md`, este archivo, `INFORME_V0_2_1_CODEX.md` y `VERIFICACION.md`; ve
   no se publicó nada y los campos de autor quedan explícitamente pendientes.
 - Decisión: GO v1.0.0 como **Portfolio Local Release — Not Production Ready**.
   Alcance general congelado; solo defectos bloqueantes concretos deben reabrirlo.
+
+## Fase 9 — publicación GitHub COMPLETADA
+
+- Repositorio público:
+  `https://github.com/yerlangomezhernandez24-afk/datatrust-api`.
+- Commit de referencia v1.0.0:
+  `84b7b1b3c59160a5cb870f402766498fa20bf7ec`.
+- Actualización de Actions:
+  `cffa751028bc625f29f4cc80c2575116ff97afda`.
+- GitHub Actions aprobó Python 3.11 y 3.12 en 27 s:
+  `https://github.com/yerlangomezhernandez24-afk/datatrust-api/actions/runs/40632875253`.
+- La primera ejecución fue verde, pero mostró advertencias de runtimes Node
+  obsoletos; se actualizaron `checkout` y `setup-python` a v7 y la segunda
+  ejecución quedó sin esas advertencias.
+- No se publicaron bases, respaldos, entornos virtuales, secretos, caches,
+  artefactos de build ni datos reales. No se desplegó la aplicación.
+- Sigue pendiente una decisión del titular sobre `LICENSE`; Docker tampoco se
+  ejecutó.

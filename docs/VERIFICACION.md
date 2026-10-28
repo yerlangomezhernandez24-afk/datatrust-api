@@ -284,9 +284,9 @@ temporary_database_removed = true
 La segunda repetición del benchmark midió medianas 1,815/17,735/185,589 ms para 100/1.000/10.000 filas. Ver `BENCHMARK.md`; no es SLA.
 
 - Python 3.12.14: EJECUTADO.
-- Python 3.11: NO EJECUTADO; no instalado en el host.
+- Python 3.11: NO EJECUTADO localmente; verificado en GitHub Actions.
 - Docker build/run: NO EJECUTADO; comando no disponible.
-- GitHub Actions remoto: NO EJECUTADO; no hay remoto ni publicación.
+- GitHub Actions remoto: EJECUTADO en Python 3.11/3.12; ambos jobs aprobaron.
 - ML: NO EJECUTADO; no hay dataset etiquetado que sustente valor incremental.
 
 ## Cierre de portafolio v1.0.0 — 27 de octubre de 2026
@@ -355,7 +355,20 @@ temporary_database_removed = true
 
 ### No verificado
 
-- Python 3.11: intérprete no instalado.
+- Python 3.11: intérprete no instalado localmente; el job remoto aprobó.
 - Docker: comando no disponible; Dockerfile solo inspeccionado.
-- GitHub Actions: sin remoto/publicación, por lo que no existe ejecución remota.
 - macOS/Linux y pentest externo: no ejecutados.
+
+### Publicación y CI remoto
+
+- Repositorio público:
+  `https://github.com/yerlangomezhernandez24-afk/datatrust-api`.
+- Primera ejecución de Actions: verde; 2 jobs, 23 s, con advertencias por
+  runtimes Node obsoletos en versiones anteriores de las acciones.
+- Workflow actualizado a `actions/checkout@v7` y
+  `actions/setup-python@v7`.
+- Segunda ejecución:
+  `https://github.com/yerlangomezhernandez24-afk/datatrust-api/actions/runs/40632875253`.
+  Resultado: verde, 2 jobs (Python 3.11 y 3.12), 27 s, sin advertencias de
+  runtimes Node; permanecieron dos avisos informativos de migración de
+  `ubuntu-latest`.

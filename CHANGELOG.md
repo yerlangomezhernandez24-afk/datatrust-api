@@ -12,18 +12,22 @@ Este archivo registra cambios verificables del prototipo. El proyecto continúa 
 - Guías definitivas de usuario, reclutador, caso de estudio, CV/LinkedIn, publicación GitHub y cierre v1.
 - Sección de autoría pública de Yerlan Daniel Gómez Hernández y transparencia sobre asistencia de herramientas de IA.
 - Explicación visible de filas inválidas frente a incidencias y pista de desplazamiento horizontal para la tabla móvil.
+- Publicación pública en `yerlangomezhernandez24-afk/datatrust-api`, rama `main`, con metadatos y temas técnicos revisados.
 
 ### Verificado localmente
 - 113 pruebas descubiertas y aprobadas sin warnings; `compileall`, `node --check`, `pip check` y coherencia de versión correctos.
 - Instalación editable limpia y wheel final instalados en entornos separados con Python 3.12.14.
 - Wheel final de 32.718 bytes, SHA-256 `D445445C631713F17B0C80A2994B26801E45CDC7151192C426743618D1DA2A3E`, con metadata README, HTML, CSS, JS, SVG, perfiles y ambas demos.
 - Smoke Uvicorn desde el wheel y E2E real: demos 6/100, error 422, selección de perfil, exportación, teclado y 360/390/768/1366 sin overflow de página.
+- GitHub Actions completó correctamente la matriz Python 3.11/3.12; la segunda ejecución terminó verde en 27 s sin advertencias de runtimes Node obsoletos.
+
+### Corregido tras publicar
+- Workflow actualizado a `actions/checkout@v7` y `actions/setup-python@v7` para eliminar las advertencias de Node 20 observadas en la primera ejecución.
 
 ### Límites
-- Python 3.11, Docker y GitHub Actions remotos no se ejecutaron por ausencia de herramienta/remoto; no bloquean la demo local.
-- No se creó commit, remoto ni licencia. El nombre del autor, el correo
-  `noreply` y el destino están definidos; la autenticación de Git y la
-  publicación siguen pendientes.
+- Python 3.11 no está instalado localmente, pero la matriz remota sí lo verificó.
+- Docker continúa sin ejecutarse en este equipo y no se desplegó el servicio.
+- No se añadió licencia; el titular todavía debe elegirla.
 
 ## [0.3.0] - 2026-10-27
 

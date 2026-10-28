@@ -1,8 +1,8 @@
 # Datos de publicación y decisiones pendientes
 
-Estado al 2026-10-27: el titular definió su nombre público, usuario de GitHub,
-repositorio de destino y visibilidad. El proyecto todavía no tiene commits,
-remoto ni licencia, y no se ha publicado.
+Estado al 2026-10-27: el repositorio fue publicado y verificado. La única
+decisión editorial pendiente es la licencia; no existe un despliegue público de
+la aplicación.
 
 ## Identidad pública
 
@@ -13,12 +13,15 @@ remoto ni licencia, y no se ha publicado.
   la cuenta; no se documenta el correo personal.
 - Perfil de LinkedIn opcional: `PENDIENTE_DEL_AUTOR`
 - Repositorio de destino: `https://github.com/yerlangomezhernandez24-afk/datatrust-api`
-- Visibilidad deseada: `público`
+- Visibilidad actual: `público`
+- Rama publicada: `main`
+- Commit inicial de v1.0.0: `84b7b1b3c59160a5cb870f402766498fa20bf7ec`
+- Ajuste de CI publicado: `cffa751028bc625f29f4cc80c2575116ff97afda`
 - Demo desplegada: no existe; la demostración continúa siendo local.
 - Nombre público del proyecto: `DataTrust API`.
 
-No usar el correo personal de Git si no se desea hacerlo público. GitHub permite
-usar un correo `noreply`, pero la elección corresponde al titular.
+El historial publicado usa el nombre autorizado y la dirección `noreply` de
+GitHub. No se documenta el correo personal.
 
 ## Identidad Git local
 
@@ -33,8 +36,9 @@ git config --get user.name
 git config --get user.email
 ```
 
-No se debe ejecutar el segundo comando con un valor inventado. Hay que copiarlo
-desde los ajustes de GitHub y revisar el contenido preparado antes del commit.
+No se debe ejecutar el segundo comando con un valor inventado. En otra copia
+hay que copiarlo desde los ajustes de GitHub y revisar el contenido preparado
+antes del commit.
 
 ## Licencia por elegir
 
@@ -64,16 +68,17 @@ Metadatos locales observados en dependencias directas o relevantes:
 Estos datos provienen de la metadata instalada y deben revalidarse antes de
 distribuir el proyecto; no sustituyen leer los textos de licencia oficiales.
 
-## Revisión de privacidad
+## Revisión de privacidad ejecutada
 
-Antes de publicar, confirmar:
-
-- [ ] No hay bases SQLite, `.env`, claves, tokens, certificados ni logs.
-- [ ] No hay rutas absolutas, nombre de usuario del equipo ni datos personales.
-- [ ] Solo se incluyen CSV sintéticos; `example.invalid` no representa personas.
-- [ ] `.local-backups/`, `.venv*`, `build/`, `dist/`, caches y `data/` siguen
+- [x] No se publicaron bases SQLite, `.env`, claves, tokens, certificados ni logs.
+- [x] No se publicaron rutas absolutas, nombre de usuario del equipo ni datos personales.
+- [x] Los CSV incluidos son sintéticos; `example.invalid` no representa personas.
+- [x] `.local-backups/`, `.venv*`, `build/`, `dist/`, caches y `data/` siguen
       ignorados.
-- [ ] Las capturas, si se agregan luego, no muestran pestañas, correos, rutas ni
-      información personal del escritorio.
-- [ ] El README conserva el aviso “Not Production Ready”.
-- [ ] La declaración sobre asistencia de Codex sigue visible y honesta.
+- [x] No se incorporaron capturas del escritorio.
+- [x] El README conserva el aviso “Not Production Ready”.
+- [x] La declaración sobre asistencia de herramientas de IA sigue visible y honesta.
+
+El control reduce el riesgo de publicación accidental, pero no demuestra de
+forma absoluta la ausencia de secretos. No se deben subir datos reales o
+sensibles en futuras actualizaciones.

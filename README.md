@@ -105,8 +105,9 @@ python3 -m venv .venv
 .venv/bin/python -m uvicorn datatrust_api.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
 
-La ejecución macOS/Linux no fue verificada en este cierre; CI mantiene una
-matriz declarada para 3.11/3.12, pero no se ejecutó remotamente.
+La ejecución manual en macOS/Linux no fue verificada en este cierre. El
+workflow publicado sí terminó correctamente en GitHub Actions con Python 3.11
+y 3.12 sobre Linux.
 
 ## Datos sintéticos incluidos
 
@@ -173,7 +174,8 @@ También se comprobó un wheel `1.0.0` instalado en un entorno aislado, los
 recursos empacados y un recorrido real de navegador en 360×800, 390×844,
 768×1024 y 1366×768. Consulta [VERIFICACION.md](docs/VERIFICACION.md) para los
 comandos y [BENCHMARK.md](docs/BENCHMARK.md) para la medición local, que no es
-un SLA.
+un SLA. La ejecución remota verificada está disponible en
+[GitHub Actions](https://github.com/yerlangomezhernandez24-afk/datatrust-api/actions/runs/40632875253).
 
 ## Seguridad y privacidad
 
@@ -204,9 +206,12 @@ quisiera convertirlo en un servicio real, sería otro alcance: autenticación,
 autorización, TLS, aislamiento, retención, observabilidad, migraciones y una
 política SQLite/WAL o un motor servidor basada en mediciones.
 
-La identidad pública, el correo GitHub `noreply` y el repositorio de destino ya
-están definidos. La publicación permanece pendiente hasta crear el primer
-commit y autenticar Git desde este equipo. Véanse
+El código está publicado en
+[github.com/yerlangomezhernandez24-afk/datatrust-api](https://github.com/yerlangomezhernandez24-afk/datatrust-api),
+en la rama `main`, con autoría mediante la dirección `noreply` confirmada de
+GitHub. La matriz remota de Python 3.11/3.12 está verde. No se desplegó el
+servicio ni se habilitó GitHub Pages: la demo continúa siendo local. Véanse el
+[informe de publicación](docs/INFORME_PUBLICACION_GITHUB.md),
 [DATOS_PENDIENTES_PUBLICACION.md](docs/DATOS_PENDIENTES_PUBLICACION.md) y
 [CHECKLIST_PUBLICACION_GITHUB.md](docs/CHECKLIST_PUBLICACION_GITHUB.md). No se
 incluye archivo `LICENSE` porque el titular aún debe elegirlo.

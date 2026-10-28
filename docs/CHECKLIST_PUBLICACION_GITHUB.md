@@ -1,9 +1,8 @@
 # Checklist de publicación en GitHub
 
 El titular autorizó el 27 de octubre de 2026 preparar y publicar el repositorio
-`yerlangomezhernandez24-afk/datatrust-api` como público. La ejecución sigue
-condicionada a autenticar Git exactamente con esa cuenta y comprobar que el
-destino no contiene trabajo que pueda sobrescribirse.
+`yerlangomezhernandez24-afk/datatrust-api` como público. La publicación se
+completó con esa cuenta, sin sobrescribir trabajo remoto previo.
 
 ## Decisiones del titular
 
@@ -13,8 +12,8 @@ destino no contiene trabajo que pueda sobrescribirse.
 - [x] Confirmar el correo GitHub `noreply` para la identidad del commit.
 - [ ] Elegir MIT, Apache-2.0 u otra licencia con criterio propio.
 - [ ] Añadir el texto oficial de licencia con año y titular reales.
-- [ ] Revisar si `DataTrust API` seguirá siendo el nombre público.
-- [ ] Definir visibilidad del futuro repositorio.
+- [x] Confirmar `DataTrust API` como nombre público.
+- [x] Definir visibilidad pública.
 
 ## Archivos permitidos
 
@@ -23,8 +22,8 @@ destino no contiene trabajo que pueda sobrescribirse.
 - `README.md`, `README.en.md`, `CHANGELOG.md`, `AGENTS.md` y `pyproject.toml`.
 - Documentación técnica bajo `docs/`.
 - CSV sintéticos que usen datos ficticios y dominios reservados.
-- Workflow y Dockerfile como configuración inspeccionada, sin afirmar que CI o
-  Docker se ejecutaron si no hay evidencia.
+- Workflow verificado remotamente y Dockerfile conservado como configuración
+  inspeccionada; Docker no se declara ejecutado.
 
 ## Archivos prohibidos o que deben seguir ignorados
 
@@ -48,37 +47,39 @@ git config --get user.email
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-- [ ] Revisar manualmente cada archivo no ignorado.
-- [ ] Buscar rutas absolutas y nombres de usuario locales.
-- [ ] Buscar patrones de secretos; un resultado vacío reduce riesgo, no lo elimina.
-- [ ] Confirmar que los únicos CSV publicados son sintéticos.
-- [ ] Confirmar que README dice “Not Production Ready”.
-- [ ] Confirmar coherencia `1.0.0` en código, metadata y `/health`.
+- [x] Revisar manualmente cada archivo no ignorado.
+- [x] Buscar rutas absolutas y nombres de usuario locales.
+- [x] Buscar patrones de secretos; un resultado vacío reduce riesgo, no lo elimina.
+- [x] Confirmar que los únicos CSV publicados son sintéticos.
+- [x] Confirmar que README dice “Not Production Ready”.
+- [x] Confirmar coherencia `1.0.0` en código, metadata y `/health`.
 - [ ] Revalidar licencias de dependencias desde fuentes oficiales antes de
   distribuir binarios.
 
-## Git pendiente
+## Git y publicación
 
-Estado de preparación: rama local `main`, sin commits ni remoto. El nombre y el
-correo `noreply` están configurados solo para este repositorio; la autenticación
-de Git sigue pendiente. Antes de publicar se debe:
+Estado final: rama local `main` vinculada a `origin/main`. El nombre y el
+correo `noreply` están configurados solo para este repositorio. Se publicaron:
 
-1. autenticar Git con la cuenta `yerlangomezhernandez24-afk`;
-2. revisar y preparar el primer commit;
-3. crear el repositorio remoto en su propia cuenta;
-4. añadir el remoto conscientemente;
-5. ejecutar CI y revisar el resultado real;
-6. publicar solo después de una última revisión de privacidad.
+1. `84b7b1b3c59160a5cb870f402766498fa20bf7ec`: referencia v1.0.0;
+2. `cffa751028bc625f29f4cc80c2575116ff97afda`: actualización de Actions.
 
-Topics previstos: `python`, `fastapi`, `data-quality`, `sqlite`, `csv`,
-`rest-api`, `pytest`, `portfolio-project`, `automation`.
+Repositorio:
+`https://github.com/yerlangomezhernandez24-afk/datatrust-api`.
+
+- [x] Remoto añadido conscientemente y rama `main` publicada.
+- [x] Autoría conservada como Yerlan Daniel Gómez Hernández.
+- [x] Topics guardados: `python`, `fastapi`, `data-quality`, `sqlite`,
+      `csv`, `rest-api`, `pytest`, `portfolio-project`, `automation`.
+- [x] README, código y documentación visibles en GitHub.
 
 No incluir comandos con credenciales ni tokens en documentación o historial.
 
 ## CI y Docker
 
-- [ ] Ejecutar GitHub Actions en Python 3.11 y 3.12 y conservar el resultado.
+- [x] Ejecutar GitHub Actions en Python 3.11 y 3.12 y conservar el
+      [resultado verde](https://github.com/yerlangomezhernandez24-afk/datatrust-api/actions/runs/40632875253).
 - [ ] Probar `Dockerfile` con Docker disponible y publicar solo en
   `127.0.0.1:8000` para la demo.
-- [ ] No convertir un CI remoto pendiente en un “badge verde” inventado.
-- [ ] No desplegar a Internet sin abrir un nuevo alcance de seguridad.
+- [x] Documentar el resultado real sin inventar un badge.
+- [x] No desplegar a Internet sin abrir un nuevo alcance de seguridad.
