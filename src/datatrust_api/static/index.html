@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="Dashboard local de validación CSV de DataTrust API">
+    <title>DataTrust API · Validación local</title>
+    <link rel="stylesheet" href="/static/styles.css?v=20261027c">
+    <script src="/static/app.js?v=20261027d" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+      <nav class="topbar" aria-label="Navegación principal">
+        <a class="brand" href="/" aria-label="DataTrust API, inicio">
+          <span class="brand-mark" aria-hidden="true">DT</span>
+          <span>DataTrust API</span>
+        </a>
+        <div class="topbar-actions">
+          <span class="local-badge">Demo local</span>
+          <a class="nav-link" href="/docs">Documentación API</a>
+        </div>
+      </nav>
+
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Calidad de datos explicable</p>
+          <h1>Detecta problemas en tus pedidos antes de importarlos.</h1>
+          <p class="hero-summary">
+            Valida archivos CSV con reglas deterministas, revisa cada incidencia
+            y exporta un reporte seguro. Todo funciona en tu equipo y con datos sintéticos.
+          </p>
+          <div class="hero-actions">
+            <a class="button-link primary-link" href="#upload-title">Validar un CSV</a>
+            <a class="button-link quiet-link" href="/static/demo-orders-6.csv" download>
+              Demo de 6 pedidos
+            </a>
+            <a class="button-link quiet-link" href="/static/demo-orders-100.csv" download>
+              Demo de 100 pedidos
+            </a>
+          </div>
+        </div>
+
+        <aside class="trust-card" aria-label="Estado y alcance de la demo">
+          <div class="health-line">
+            <span class="health-dot" aria-hidden="true"></span>
+            <span id="app-health" aria-live="polite">Comprobando API local…</span>
+          </div>
+          <dl class="trust-facts">
+            <div><dt>Persistencia</dt><dd>Solo resúmenes e incidencias</dd></div>
+            <div><dt>Límites</dt><dd>2 MiB · 10.000 filas</dd></div>
+            <div><dt>Alcance</dt><dd>Un usuario · un worker</dd></div>
+          </dl>
+          <p>Sin autenticación ni uso público. No cargues información real o sensible.</p>
+        </aside>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="quick-start" aria-labelledby="quick-start-title">
+        <div class="section-intro">
+          <p class="section-kicker">Recorrido rápido</p>
+          <h2 id="quick-start-title">De archivo a diagnóstico en tres pasos</h2>
+        </div>
+        <ol class="steps">
+          <li><span>1</span><div><strong>Elige reglas</strong><small>Selecciona un perfil local versionado.</small></div></li>
+          <li><span>2</span><div><strong>Carga tu CSV</strong><small>El backend verifica estructura y límites.</small></div></li>
+          <li><span>3</span><div><strong>Revisa y exporta</strong><small>Consulta incidencias sin guardar las filas.</small></div></li>
+        </ol>
+      </section>
+
+      <section class="panel upload-panel" aria-labelledby="upload-title">
+        <div class="upload-copy">
+          <p class="section-kicker">Nueva ejecución</p>
+          <h2 id="upload-title">Validar un archivo</h2>
+          <p>CSV UTF-8, máximo 2 MiB y 10.000 filas. El backend es la autoridad final.</p>
+          <p class="privacy-note">El nombre original y el contenido de las filas no se conservan.</p>
+        </div>
+        <form id="upload-form">
+          <div class="field">
+            <label for="profile">Perfil de reglas</label>
+            <select id="profile" name="profile" required></select>
+          </div>
+          <div class="field">
+            <label for="csv-file">Archivo CSV</label>
+            <div class="file-control">
+              <input id="csv-file" name="file" type="file" accept=".csv,text/csv" aria-describedby="file-help selected-file" required>
+              <span id="selected-file" class="file-name">Ningún archivo seleccionado</span>
+            </div>
+            <small id="file-help">
+              Usa datos sintéticos. Empieza con la
+              <a class="inline-link" href="/static/demo-orders-6.csv" download>demo de 6 pedidos</a>
+              o prueba la
+              <a class="inline-link" href="/static/demo-orders-100.csv" download>demo de 100 pedidos</a>.
+              También se conserva la
+              <a class="inline-link" href="/static/sample-orders.csv" download>muestra rápida original</a>.
+            </small>
+          </div>
+          <button id="submit-button" type="submit">Validar archivo</button>
+        </form>
+        <p id="status" class="status" role="status" aria-live="polite">Listo para validar.</p>
+      </section>
+
+      <section class="metrics" aria-label="Resumen de la ejecución seleccionada">
+        <p class="metrics-note">
+          Una fila inválida puede tener varias incidencias; por eso ambos totales
+          no siempre coinciden.
+        </p>
+        <article><span>Total de filas</span><strong id="metric-total">—</strong></article>
+        <article class="metric-valid"><span>Válidas</span><strong id="metric-valid">—</strong></article>
+        <article class="metric-invalid"><span>Inválidas</span><strong id="metric-invalid">—</strong></article>
+        <article><span>Incidencias</span><strong id="metric-issues">—</strong></article>
+      </section>
+
+      <div class="workspace">
+        <section class="panel" aria-labelledby="runs-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Historial local</p>
+              <h2 id="runs-title">Ejecuciones</h2>
+            </div>
+            <button id="refresh-runs" class="secondary" type="button">Actualizar</button>
+          </div>
+          <p id="runs-empty" class="empty">Todavía no hay ejecuciones. Carga el archivo de prueba para comenzar.</p>
+          <ul id="runs-list" class="runs-list" aria-label="Ejecuciones disponibles"></ul>
+          <nav class="pager" aria-label="Paginación de ejecuciones">
+            <button id="runs-prev" class="secondary" type="button" disabled>Anterior</button>
+            <span id="runs-page" aria-live="polite">Página 1</span>
+            <button id="runs-next" class="secondary" type="button" disabled>Siguiente</button>
+          </nav>
+        </section>
+
+        <section class="panel" aria-labelledby="issues-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">Diagnóstico</p>
+              <h2 id="issues-title">Incidencias</h2>
+            </div>
+            <a id="download-link" class="button-link primary-link disabled" aria-disabled="true" tabindex="-1">Exportar CSV seguro</a>
+          </div>
+          <p id="selected-run" class="selected-run" aria-live="polite">Selecciona una ejecución para ver su diagnóstico.</p>
+          <p class="table-hint">En pantallas pequeñas, desliza la tabla horizontalmente para ver todas las columnas.</p>
+          <div class="table-wrap" tabindex="0" aria-label="Tabla desplazable de incidencias">
+            <table>
+              <caption class="sr-only">Incidencias de validación</caption>
+              <thead>
+                <tr><th scope="col">Fila</th><th scope="col">Campo</th><th scope="col">Código</th><th scope="col">Mensaje</th></tr>
+              </thead>
+              <tbody id="issues-body"></tbody>
+            </table>
+          </div>
+          <p id="issues-empty" class="empty">No hay incidencias para mostrar.</p>
+          <nav class="pager" aria-label="Paginación de incidencias">
+            <button id="issues-prev" class="secondary" type="button" disabled>Anterior</button>
+            <span id="issues-page" aria-live="polite">Página 1</span>
+            <button id="issues-next" class="secondary" type="button" disabled>Siguiente</button>
+          </nav>
+        </section>
+      </div>
+
+      <section class="help-panel" aria-labelledby="help-title">
+        <div>
+          <p class="section-kicker">Ayuda</p>
+          <h2 id="help-title">Errores frecuentes</h2>
+        </div>
+        <div class="help-grid">
+          <article><strong>422 · Estructura</strong><p>Revisa UTF-8, encabezados, columnas y máximo de filas.</p></article>
+          <article><strong>413 · Tamaño</strong><p>Reduce el CSV a 2 MiB y respeta el límite del request multipart.</p></article>
+          <article><strong>503 · SQLite ocupado</strong><p>Espera un momento y reintenta; la demo usa un solo writer.</p></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <strong>DataTrust API</strong>
+      <span>Prototipo educativo local · Sin autenticación · No apto para producción</span>
+      <a class="inline-link" href="/docs">Swagger / OpenAPI</a>
+    </footer>
+  </body>
+</html>

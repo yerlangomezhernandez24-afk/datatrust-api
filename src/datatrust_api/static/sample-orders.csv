@@ -1,0 +1,5 @@
+order_id,customer_id,email,amount,currency,order_date
+DEMO-1001,CUSTOMER-01,alex@example.invalid,49.90,USD,2026-10-25
+DEMO-1002,CUSTOMER-02,correo-invalido,15.00,USD,2026-10-25
+DEMO-1003,CUSTOMER-03,sam@example.invalid,12.345,USD,2026-10-25
+DEMO-1004,CUSTOMER-04,taylor@example.invalid,8.50,USD,2026-02-30

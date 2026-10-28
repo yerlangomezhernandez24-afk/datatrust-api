@@ -1,0 +1,7 @@
+order_id,customer_id,email,amount,currency,order_date
+P-1001,C-1,ana@example.org,5000.00,CRC,2026-10-21
+P-1001,C-2,luis@example.org,25.45,USD,2026-10-22
+P-1003,C-3,no-es-email,10.00,EUR,2026-10-23
+P-1004,C-4,sara@example.org,-100,CRC,2026-10-24
+P-1005,C-5,leo@example.org,200,XXX,2026-02-30
+P-1006,C-6,iris@example.org,50,CRC,2026-10-25

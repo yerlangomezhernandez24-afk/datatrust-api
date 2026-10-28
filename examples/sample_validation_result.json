@@ -1,0 +1,40 @@
+{
+  "dataset": "orders_with_issues.csv",
+  "profile": "orders_v1",
+  "total_rows": 6,
+  "valid_rows": 2,
+  "invalid_rows": 4,
+  "issue_count": 5,
+  "issues": [
+    {
+      "row_number": 3,
+      "field_name": "order_id",
+      "code": "DUPLICATE",
+      "message": "Identificador de pedido repetido."
+    },
+    {
+      "row_number": 4,
+      "field_name": "email",
+      "code": "INVALID_EMAIL",
+      "message": "Formato de correo no reconocido."
+    },
+    {
+      "row_number": 5,
+      "field_name": "amount",
+      "code": "INVALID_AMOUNT",
+      "message": "El importe debe ser un número finito mayor que cero."
+    },
+    {
+      "row_number": 6,
+      "field_name": "currency",
+      "code": "INVALID_CURRENCY",
+      "message": "Moneda no admitida por este perfil (CRC, USD, EUR)."
+    },
+    {
+      "row_number": 6,
+      "field_name": "order_date",
+      "code": "INVALID_DATE",
+      "message": "Fecha obligatoria con formato AAAA-MM-DD y calendario válido."
+    }
+  ]
+}

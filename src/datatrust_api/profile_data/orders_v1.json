@@ -1,0 +1,30 @@
+{
+  "id": "orders_v1",
+  "version": 1,
+  "description": "Perfil base de pedidos con monedas CRC, USD o EUR.",
+  "max_rows": 10000,
+  "required_fields": ["order_id", "customer_id", "email", "amount", "currency", "order_date"],
+  "identifier_fields": ["order_id", "customer_id"],
+  "unique_fields": ["order_id"],
+  "email_fields": ["email"],
+  "positive_decimal_fields": ["amount"],
+  "field_limits": {
+    "order_id": {"max_characters": 128, "max_utf8_bytes": 256},
+    "customer_id": {"max_characters": 128, "max_utf8_bytes": 256},
+    "email": {"max_characters": 254, "max_utf8_bytes": 512},
+    "amount": {"max_characters": 32, "max_utf8_bytes": 64},
+    "currency": {"max_characters": 16, "max_utf8_bytes": 64},
+    "order_date": {"max_characters": 32, "max_utf8_bytes": 64}
+  },
+  "decimal_policies": {
+    "amount": {
+      "minimum": "0.01",
+      "maximum": "999999999999.99",
+      "currency_field": "currency",
+      "max_decimal_places_by_currency": {"CRC": 2, "USD": 2, "EUR": 2},
+      "allow_scientific": false
+    }
+  },
+  "enum_fields": {"currency": ["CRC", "USD", "EUR"]},
+  "iso_date_fields": ["order_date"]
+}

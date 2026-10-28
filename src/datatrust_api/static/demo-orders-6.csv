@@ -1,0 +1,7 @@
+order_id,customer_id,email,amount,currency,order_date
+DEMO-1001,SYNTH-001,ana.demo@example.invalid,5000.00,CRC,2026-10-21
+DEMO-1001,SYNTH-002,luis.demo@example.invalid,25.45,USD,2026-10-22
+DEMO-1003,SYNTH-003,correo-invalido,10.00,EUR,2026-10-23
+DEMO-1004,SYNTH-004,sara.demo@example.invalid,-100,CRC,2026-10-24
+DEMO-1005,SYNTH-005,leo.demo@example.invalid,200,XXX,2026-02-30
+DEMO-1006,SYNTH-006,iris.demo@example.invalid,50,CRC,2026-10-25
